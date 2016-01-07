@@ -11,15 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106112915) do
+ActiveRecord::Schema.define(version: 20160107090751) do
 
   create_table "properties", force: :cascade do |t|
-    t.string   "address",    limit: 255, null: false
-    t.integer  "rent",       limit: 4,   null: false
-    t.float    "footprint",  limit: 24,  null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "user_id",    limit: 4,   null: false
+    t.string   "address",             limit: 255,             null: false
+    t.integer  "rent",                limit: 4,               null: false
+    t.float    "footprint",           limit: 24,              null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "user_id",             limit: 4,               null: false
+    t.integer  "administration_cost", limit: 4
+    t.integer  "common_service_cost", limit: 4
+    t.integer  "lease_deposit",       limit: 4
+    t.integer  "key_money",           limit: 4,   default: 0
+    t.integer  "category",            limit: 4,   default: 0
+    t.integer  "room_category",       limit: 4,   default: 0
   end
 
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
