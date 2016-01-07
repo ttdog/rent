@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  resources :properties do
+    #collectionは複数のオブジェクトを扱うアクションに対して
+    #GET properties/my
+    collection do
+      get :my
+    end
+    #memberは単一のオブジェクトを扱うアクションに対して
+    # GET properties/:id/detail
+    member do
+      get :detail
+    end
+  end
+  devise_for :users
+  get 'home/index'
+
+  get 'home/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +70,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+root to: "home#index"
+
+# # ログイン画面をホームにする
+# devise_scope :user do
+#   root :to => "devise/sessions#new"
+# end
 end
